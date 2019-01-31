@@ -51,7 +51,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // #define RAY_SAMPLES 16
 //// How many samples around the hit position
 // #define NEARBY_SAMPLES 4 // 0 to 4 , 0 to disable
-//// Length of first sample in normal space
+//// Length of first sample in world space
 #define INITIAL_STEP_LENGTH 1
 //// Size of a pixel used by NEARBY_SAMPLES
 #define PIXEL_SIZE_MULT 1.
