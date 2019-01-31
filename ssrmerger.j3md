@@ -1,0 +1,30 @@
+MaterialDef SSRMerger {
+
+    MaterialParameters {
+        Texture2D Scene
+        Texture2D SSR
+        Boolean Horizontal
+        Boolean Vertical    
+        Float Size: 1.0
+        
+    }
+
+    Technique {
+        VertexShader GLSL150:  cr/Post/SSR/ssr.vert
+        FragmentShader GLSL150: cr/Post/SSR/ssrmerger.frag
+
+        WorldParameters {
+            Resolution
+            Time
+        }
+
+        Defines {
+            FINAL:Scene
+            HORIZONTAL:Horizontal
+            VERTICAL:Vertical
+        }
+
+    }
+
+   
+}
