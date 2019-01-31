@@ -6,7 +6,6 @@ uniform sampler2D m_SSR;
 
 uniform vec2 g_Resolution;
 uniform float m_Size;
-uniform float g_Time;
 
 noperspective in vec2 texCoord;
 out vec4 outFragColor;
