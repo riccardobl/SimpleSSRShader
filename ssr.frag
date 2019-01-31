@@ -84,10 +84,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if NEARBY_SAMPLES>0
     const vec2 _SAMPLES[4]=vec2[](
-        vec2(1.0f, 0.0f), 
-        vec2(-1.0f, 0.0f), 
-        vec2(0.0f, 1.0f), 
-        vec2(0.0f, -1.0f)
+        vec2(1.0, 0.0), 
+        vec2(-1.0, 0.0), 
+        vec2(0.0, 1.0), 
+        vec2(0.0, -1.0)
     );
 #endif
 
