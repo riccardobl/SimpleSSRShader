@@ -1,0 +1,65 @@
+MaterialDef SSR {
+
+    MaterialParameters {
+        // Scene depth 
+        Texture2D SceneDepth -LINEAR
+
+        // Scene color 
+        Texture2D Scene 
+
+        // Scene normals in worldspace (optional)
+        Texture2D SceneNormals -LINEAR 
+
+        // How many samples along the ray
+        Int Samples: 16
+
+        // How many samples around the hit position
+        Int NearbySamples: 2
+
+        // Read only XY from normalmap and generate Z
+        Boolean RGNormalMap: True
+
+        // Z component of normal map is actually glossiness
+        Boolean GlossinessPackedInNormalB : True
+
+        // Approximate normals using the depth buffer (automatically actived if you don't provide a SceneNormals texture)
+        Boolean ApproximateNormals
+
+        // Approximate glossiness using the normal map 
+        // (requires SceneNormals, can be used together with GlossinessPackedInNormalB to reduce noise for high frequency normals)
+        Boolean ApproximateGlossiness : True
+
+        // Reflections fading 
+        Vector2 NearReflectionsFade : 0.01 1.0
+        Vector2 FarReflectionsFade : 20.0 300.0
+
+        ///
+        Vector3 CameraPosition
+        Vector2 FrustumNearFar
+        Matrix4 SceneViewProjectionMatrixInverse
+        Matrix4 SceneViewProjectionMatrix
+
+      
+    }
+
+    Technique {
+        VertexShader GLSL150:   cr/Post/SSR/ssr.vert
+        FragmentShader GLSL150:  cr/Post/SSR/ssr.frag
+
+        WorldParameters {
+            ResolutionInverse
+        }
+
+        Defines {
+            SCENE_NORMALS:SceneNormals
+            SCENE: Scene
+            RG_NORMAL_MAP: RGNormalMap
+            USE_APPROXIMATED_NORMALS: ApproximateNormals
+            USE_APPROXIMATED_GLOSSINESS: ApproximateGlossiness
+            GLOSSINESS_PACKET_IN_NORMAL_B: GlossinessPackedInNormalB
+            RAY_SAMPLES: Samples
+            NEARBY_SAMPLES: NearbySamples
+        }
+    }
+
+}
