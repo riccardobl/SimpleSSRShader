@@ -157,7 +157,9 @@ vec3 getScreenPos(in vec2 texCoord,in float depth){
 float linearizeDepth(in float depth){
     float f=m_FrustumNearFar.y;
     float n = m_FrustumNearFar.x;
-    return (2 * n) / (f + n - depth * (f - n));
+    float d=depth*2.-1.;
+    d= (2. * n *f ) / (f + n - d * (f - n));
+    return (d-n)/(f-n);
 }
 
 /**
